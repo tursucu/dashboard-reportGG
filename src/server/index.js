@@ -30,7 +30,7 @@ if (process.env.MODE === 'development') {
 
 app.use(
   cors({
-    origin: process.env.BASE_ROOT,
+    origin: 'http://localhost:5000',
     credentials: true,
     // eslint-disable-next-line comma-dangle
   })

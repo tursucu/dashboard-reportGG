@@ -1,5 +1,6 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   output: {
@@ -7,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/build',
   },
+  plugins: [new CopyWebpackPlugin([{ from: 'src/app/static/img', to: 'img' }])],
   module: {
     rules: [
       {
@@ -22,12 +24,16 @@ module.exports = {
                 {
                   ssr: true,
                   displayName: true,
-                  pure: true,
+                  pure: false,
                 },
               ],
             ],
           },
         },
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader'],
       },
     ],
   },

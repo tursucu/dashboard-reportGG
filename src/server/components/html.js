@@ -12,8 +12,13 @@ const HTML = ({ content, state, helmet, errorContent, styleTags }) => {
     <html lang="en" {...htmlAttrs}>
       <head>
         {helmet.title.toComponent()}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet"
+        />
         {styleTags}
       </head>
       <body {...bodyAttrs}>

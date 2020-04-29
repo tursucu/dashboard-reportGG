@@ -19,10 +19,10 @@ const serverRenderer = async (req, res) => {
   const client = await new ApolloClient({
     ssrMode: true,
     link: createHttpLink({
-      uri: process.env.API_ROOT,
+      uri: 'http://localhost:4002/graphql',
       credentials: 'same-origin',
       headers: {
-        Authorization: `Bearer ${req.cookies.token}`,
+        Authorization: req.cookies.token ? `Bearer ${req.cookies.token}` : '',
       },
       fetch,
     }),
